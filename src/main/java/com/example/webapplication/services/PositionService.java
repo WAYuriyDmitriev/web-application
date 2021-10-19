@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PositionService extends EntityCrud<Position, PositionRepository> {
-    PositionService(PositionRepository positionRepository){
+    PositionService(PositionRepository positionRepository) {
         super(positionRepository);
     }
 }

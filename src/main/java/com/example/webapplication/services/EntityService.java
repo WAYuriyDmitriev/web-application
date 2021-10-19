@@ -5,11 +5,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 public interface EntityService<T> {
-    public List<T> getAll();
+    List<T> getAll();
 
-    public void deleteById(Integer id);
+    void deleteById(Integer id);
 
-    public T save(@RequestBody T newElement);
+    T save(@RequestBody T newElement);
 
-    public T update(@RequestBody T newElement);
+    T update(@RequestBody T newElement);
+
+    T findById(Integer id);
 }

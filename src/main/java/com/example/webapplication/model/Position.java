@@ -1,6 +1,8 @@
 package com.example.webapplication.model;
 
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -25,10 +27,10 @@ public class Position {
     private Double baseSalary;
 
     @Column(name = "ALLOWANCE")
-    private Double Allowance;
+    private Double allowance;
 
     @Column(name = "REWARD")
-    private Double REWARD;
+    private Double reward;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CODE_DEPARTMENT", nullable = false)

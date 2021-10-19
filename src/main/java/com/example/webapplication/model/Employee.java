@@ -23,7 +23,7 @@ public class Employee {
     private LocalDate dateReceipt;
 
     @Column(name = "DATE_DISMISSAL")
-    private LocalDate  dateDismissal;
+    private LocalDate dateDismissal;
 
     @Column(name = "ORDER_ENROLLMENT")
     private String orderEnrollment;
@@ -35,7 +35,7 @@ public class Employee {
     private String fio;
 
     @Column(name = "BIRTHDAY")
-    private LocalDate  birthDay;
+    private LocalDate birthDay;
 
     @Column(name = "SEX")
     private String sex;
@@ -47,7 +47,7 @@ public class Employee {
     private String number;
 
     @Column(name = "PASSPORT")
-    private String password;
+    private String passport;
 
     @Column(name = "INN")
     private String inn;

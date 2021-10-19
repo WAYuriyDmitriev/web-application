@@ -3,9 +3,7 @@ package com.example.webapplication.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Getter
@@ -21,7 +19,7 @@ public class PositionHistory {
     private Integer id;
 
     @Column(name = "START_DATE")
-    private LocalDate  startDate;
+    private LocalDate startDate;
 
     @Column(name = "END_DATE")
     private LocalDate endDate;

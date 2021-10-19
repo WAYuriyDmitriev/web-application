@@ -3,7 +3,6 @@ package com.example.webapplication.services;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @NoRepositoryBean
@@ -33,5 +32,10 @@ public abstract class EntityCrud<T, E extends JpaRepository<T, Integer>> impleme
     @Override
     public T update(T newElement) {
         return repository.saveAndFlush(newElement);
+    }
+
+    @Override
+    public T findById(Integer id) {
+        return repository.findById(id).get();
     }
 }

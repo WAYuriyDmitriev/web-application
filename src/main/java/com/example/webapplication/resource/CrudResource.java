@@ -1,5 +1,6 @@
 package com.example.webapplication.resource;
 
+import com.example.webapplication.adapter.CrudResourceDtoAdapter;
 import com.example.webapplication.services.EntityService;
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.http.MediaType;
@@ -7,19 +8,22 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @NoRepositoryBean
-public abstract class CrudResource<T, E extends EntityService<T>> {
+public abstract class CrudResource<T, E extends EntityService<T>, R > {
 
     private final E service;
+    private final CrudResourceDtoAdapter<T, R> crudResourceDtoAdapter;
 
-    CrudResource(E service) {
+    CrudResource(E service, CrudResourceDtoAdapter<T, R> crudResourceDtoAdapter) {
         this.service = service;
+        this.crudResourceDtoAdapter = crudResourceDtoAdapter;
     }
 
     @GetMapping
-    public List<T> getAll() {
-        return service.getAll();
+    public List<R> getAll() {
+        return service.getAll().stream().map(crudResourceDtoAdapter::objectToObjectDTO).collect(Collectors.toList());
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -32,8 +36,10 @@ public abstract class CrudResource<T, E extends EntityService<T>> {
         service.deleteById(id.get());
     }
 
-    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public T update(@RequestBody T item) {
-        return service.update(item);
+    @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public T update(@RequestBody R item, @PathVariable Optional<Integer> id) {
+        return service.update(crudResourceDtoAdapter.objectDTOtoObject(item, service.findById(id.get())));
     }
+
+
 }

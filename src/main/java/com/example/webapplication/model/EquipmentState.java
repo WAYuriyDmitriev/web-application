@@ -3,9 +3,7 @@ package com.example.webapplication.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Getter
@@ -24,7 +22,7 @@ public class EquipmentState {
     private LocalDate getDate;
 
     @Column(name = "DATE_RETURN")
-    private LocalDate  returnDate;
+    private LocalDate returnDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CODE_EMPLOYEE", nullable = false)

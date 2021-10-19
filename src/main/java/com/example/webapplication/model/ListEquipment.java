@@ -3,12 +3,8 @@ package com.example.webapplication.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.text.DecimalFormat;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Getter
