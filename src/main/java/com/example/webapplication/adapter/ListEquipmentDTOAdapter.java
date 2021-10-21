@@ -15,7 +15,7 @@ public class ListEquipmentDTOAdapter implements CrudResourceDtoAdapter<ListEquip
     }
 
     @Override
-    public ListEquipment objectDTOtoObject(ListEquipmentDTO item,ListEquipment oldItem) {
+    public ListEquipment objectDTOtoObject(ListEquipmentDTO item, ListEquipment oldItem) {
         oldItem.setId(item.getId());
         oldItem.setName(item.getName());
         oldItem.setDateBuy(item.getDateBuy());

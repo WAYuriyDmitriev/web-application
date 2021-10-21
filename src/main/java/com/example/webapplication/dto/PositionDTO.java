@@ -1,9 +1,6 @@
 package com.example.webapplication.dto;
 
-import com.example.webapplication.model.Department;
 import lombok.*;
-
-import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -16,6 +13,5 @@ public class PositionDTO {
     private Double baseSalary;
     private Double allowance;
     private Double reward;
-    private String departmentName;
-    private String departmentDirection;
+    private DepartmentDTO department;
 }

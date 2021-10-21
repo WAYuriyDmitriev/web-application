@@ -16,7 +16,8 @@ import java.util.List;
 public class ListEquipment {
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "list_equipment_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "list_equipment_generator")
+    @SequenceGenerator(name = "list_equipment_generator", sequenceName = "list_equipment_seq", schema = "employee_schema")
     private Integer id;
 
     @Column(name = "NAME")

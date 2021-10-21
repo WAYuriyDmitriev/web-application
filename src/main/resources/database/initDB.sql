@@ -1,9 +1,9 @@
-CREATE SEQUENCE IF NOT EXISTS employee_schema.employee_seq;
-CREATE SEQUENCE IF NOT EXISTS employee_schema.department_seq;
-CREATE SEQUENCE IF NOT EXISTS employee_schema.position_seq;
-CREATE SEQUENCE IF NOT EXISTS employee_schema.position_history_seq;
-CREATE SEQUENCE IF NOT EXISTS employee_schema.list_equipment_seq;
-CREATE SEQUENCE IF NOT EXISTS employee_schema.equipment_state_seq;
+CREATE SEQUENCE IF NOT EXISTS employee_schema.employee_seq increment by 50;
+CREATE SEQUENCE IF NOT EXISTS employee_schema.department_seq increment by 50;
+CREATE SEQUENCE IF NOT EXISTS employee_schema.position_seq increment by 50;
+CREATE SEQUENCE IF NOT EXISTS employee_schema.position_history_seq increment by 50;
+CREATE SEQUENCE IF NOT EXISTS employee_schema.list_equipment_seq increment by 50;
+CREATE SEQUENCE IF NOT EXISTS employee_schema.equipment_state_seq increment by 50;
 
 drop table if exists equipment_state;
 drop table if exists list_equipment;
@@ -24,9 +24,9 @@ CREATE TABLE IF NOT EXISTS employee_schema.position_t
     ID              INT         not null default nextval('employee_schema.position_seq') PRIMARY KEY,
     CODE_DEPARTMENT INT         not null,
     NAME            varchar(40) not null,
-    BASE_SALARY     float8     not null,
-    ALLOWANCE       float8     not null,
-    REWARD          float8     not null,
+    BASE_SALARY     float8      not null,
+    ALLOWANCE       float8      not null,
+    REWARD          float8      not null,
     FOREIGN KEY (CODE_DEPARTMENT) REFERENCES employee_schema.department (ID)
 );
 
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS employee_schema.list_equipment
     ID       INT         not null default nextval('employee_schema.list_equipment_seq') PRIMARY KEY,
     NAME     varchar(20) not null,
     DATE_BUY date        not null,
-    COST     float8     not null
+    COST     float8      not null
 );
 
 CREATE TABLE IF NOT EXISTS employee_schema.equipment_state

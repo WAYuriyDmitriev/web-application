@@ -1,6 +1,8 @@
 package com.example.webapplication.adapter;
 
+import com.example.webapplication.dto.DepartmentDTO;
 import com.example.webapplication.dto.PositionDTO;
+import com.example.webapplication.model.Department;
 import com.example.webapplication.model.Position;
 
 public class PositionDTOAdapter implements CrudResourceDtoAdapter<Position, PositionDTO> {
@@ -12,8 +14,11 @@ public class PositionDTOAdapter implements CrudResourceDtoAdapter<Position, Posi
                 .baseSalary(item.getBaseSalary())
                 .allowance(item.getAllowance())
                 .reward(item.getReward())
-                .departmentName(item.getDepartmentItem().getName())
-                .departmentDirection(item.getDepartmentItem().getDirection())
+                .department(DepartmentDTO.builder()
+                        .id(item.getDepartmentItem().getId())
+                        .name(item.getDepartmentItem().getName())
+                        .direction(item.getDepartmentItem().getDirection())
+                        .build())
                 .build();
     }
 
@@ -24,6 +29,9 @@ public class PositionDTOAdapter implements CrudResourceDtoAdapter<Position, Posi
         oldItem.setBaseSalary(item.getBaseSalary());
         oldItem.setAllowance(item.getAllowance());
         oldItem.setReward(item.getReward());
+        Department department = new Department();
+        department.setId(item.getDepartment().getId());
+        oldItem.setDepartmentItem(department);
 
         return oldItem;
     }

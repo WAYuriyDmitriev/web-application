@@ -1,8 +1,6 @@
 package com.example.webapplication.model;
 
 import lombok.*;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -17,7 +15,8 @@ import java.util.List;
 public class Position {
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "position_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "position_generator")
+    @SequenceGenerator(name = "position_generator", sequenceName = "position_seq", schema = "employee_schema")
     private Integer id;
 
     @Column(name = "NAME")

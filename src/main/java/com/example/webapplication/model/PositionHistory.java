@@ -15,7 +15,8 @@ import java.time.LocalDate;
 public class PositionHistory {
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "position_history_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "position_history_generator")
+    @SequenceGenerator(name = "position_history_generator", sequenceName = "position_history_seq", schema = "employee_schema")
     private Integer id;
 
     @Column(name = "START_DATE")

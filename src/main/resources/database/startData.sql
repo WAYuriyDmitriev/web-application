@@ -66,7 +66,7 @@ values (1, 'Ноутбук LENOVO', date '10-10-2010', 100000.00),
        (6, 'Ноутбук HP', date '10-10-2010', 100000.00);
 
 ALTER
-sequence employee_schema.list_equipment_seq restart with 7;
+    sequence employee_schema.list_equipment_seq restart with 7;
 
 INSERT into employee_schema.equipment_state
 values (nextval('employee_schema.equipment_state_seq'), 1, 1, date '10-10-2010', null),

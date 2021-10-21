@@ -15,7 +15,8 @@ import java.time.LocalDate;
 public class EquipmentState {
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "equipment_state_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "equipment_state_generator")
+    @SequenceGenerator(name = "equipment_state_generator", sequenceName = "equipment_state_seq", schema = "employee_schema")
     private Integer id;
 
     @Column(name = "DATE_GET")

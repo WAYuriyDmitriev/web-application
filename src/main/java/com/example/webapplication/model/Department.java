@@ -15,7 +15,8 @@ import java.util.List;
 public class Department {
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "department_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "department_generator")
+    @SequenceGenerator(name = "department_generator", sequenceName = "department_seq", schema = "employee_schema")
     private Integer id;
 
     @Column(name = "NAME")
