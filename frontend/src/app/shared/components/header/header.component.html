@@ -1,0 +1,13 @@
+<div class="header">
+  <div *ngFor="let el of navBarItems" [routerLink]="el.path"
+       class="header__item"
+       [class.active]="el===selectedItem"
+       (click)="clickNavItem(el)">
+    {{el.label}}
+  </div>
+</div>
+<div class="label-container">
+  <div>
+    {{selectedItem.description}}
+  </div>
+</div>

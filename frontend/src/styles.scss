@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+body {
+  background-color: #e7e7f8;
+  height: 100%;
+  width: 100%;
+}
+
+.button-container {
+  margin-left: auto;
+  padding-top: 20px;
+}
+
+.btn {
+  width: 140px;
+}

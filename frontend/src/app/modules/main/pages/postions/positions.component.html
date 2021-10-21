@@ -1,0 +1,76 @@
+<div class="d-flex flex-column">
+  <app-table
+    [tableColumns]="columns"
+    [dataItem]="tableData"
+    (deleteClick)="deleteClick($event)"
+    (editClick)="editClick($event)">
+
+  </app-table>
+  <div class="d-flex ">
+    <div class="button-container">
+      <button type="button" class="btn btn-secondary" (click)="addPosition()">Добавить</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #editModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Добавление новой должности</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="d-flex flex-column">
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Должность</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+               [(ngModel)]="editOrAddPosition.name">
+      </div>
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Оклад</span>
+        </div>
+        <input type="number" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+               [(ngModel)]="editOrAddPosition.baseSalary">
+      </div>
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Надбавки</span>
+        </div>
+        <input type="number" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+               [(ngModel)]="editOrAddPosition.reward">
+      </div>
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Премия</span>
+        </div>
+        <input type="number" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+               [(ngModel)]="editOrAddPosition.allowance">
+      </div>
+
+      <app-multiselect [data]="departmentData" label="Должность" [(selectItem)]="editOrAddPosition.department">
+
+      </app-multiselect>
+
+      <div class="d-flex flex-column">
+        <div class="input-group input-group-sm mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Направление</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled
+                 [ngModel]="editOrAddPosition?.department!.direction">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.close(true)">Ок</button>
+  </div>
+</ng-template>
+
